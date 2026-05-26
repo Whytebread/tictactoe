@@ -36,3 +36,24 @@ function createPlayer(name, symbol) {
 };
 
 // GAME LOGIC
+const Game = (function() {
+    let playerOne;
+    let playerTwo;
+    let currentPlayer;
+
+        function startNewGame() {
+
+        }
+
+        function getCurrentPlayer() {
+
+        }
+
+        function makeMove() {
+
+        }
+
+        function determineWinner() {
+            
+        }
+})
