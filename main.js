@@ -12,20 +12,20 @@ const gameBoard = (function(){
     }
 
     function makeMove(row, col, symbol) {
-
+        
     }
 
     function resetBoard() {
-       let board =
-        [
-            ['','',''],
-            ['','',''],
-            ['','','']
-        ];
+        board.splice(0, board.length)
     }
 
+    return {
+        getBoard,
+        makeMove,
+        resetBoard
+    };
 
-});
+}) ();
 
 // PLAYERS
 function createPlayer(name, symbol) {
@@ -54,6 +54,6 @@ const Game = (function() {
         }
 
         function determineWinner() {
-            
+
         }
 })
