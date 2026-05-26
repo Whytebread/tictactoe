@@ -6,7 +6,26 @@ const gameBoard = () => {
         ['','',''],
         ['','','']
     ];
-},
+
+    function getBoard() {
+        return board;
+    }
+
+    function makeMove(row, col, symbol) {
+
+    }
+
+    function resetBoard() {
+       let board =
+        [
+            ['','',''],
+            ['','',''],
+            ['','','']
+        ];
+    }
+
+
+};
 
 // PLAYERS
 function createPlayer(name, symbol) {
