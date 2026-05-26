@@ -1,5 +1,5 @@
 // GAMEBOARD
-const gameBoard = () => {
+const gameBoard = (function(){
    let board =
     [
         ['','',''],
@@ -25,7 +25,7 @@ const gameBoard = () => {
     }
 
 
-};
+});
 
 // PLAYERS
 function createPlayer(name, symbol) {
