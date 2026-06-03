@@ -12,7 +12,15 @@ const gameBoard = (function(){
     }
 
     function makeMove(row, col, symbol) {
-        
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            console.log("Invalid Position")
+        }
+
+        if (board[row][col] === "") {
+            board[row][col] = symbol
+        } else {
+            console.log("Space is already taken")
+        }
     }
 
     function resetBoard() {
