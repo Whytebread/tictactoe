@@ -1,11 +1,11 @@
 // GAMEBOARD
-const gameBoard = (function(){
-   let board =
-    [
-        ['','',''],
-        ['','',''],
-        ['','','']
-    ];
+const gameBoard = (function () {
+    let board =
+        [
+            ['', '', ''],
+            ['', '', ''],
+            ['', '', '']
+        ];
 
     function getBoard() {
         return board;
@@ -23,13 +23,13 @@ const gameBoard = (function(){
         }
     }
 
-function resetBoard() {
-    for (let row = 0; row < 3; row++) {
-        for (let col = 0; col < 3; col++) {
-            board[row][col] === ""
+    function resetBoard() {
+        for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 3; col++) {
+                board[row][col] === "";
+            }
         }
     }
-}
 
     return {
         getBoard,
@@ -37,7 +37,7 @@ function resetBoard() {
         resetBoard
     };
 
-}) ();
+})();
 
 // PLAYERS
 function createPlayer(name, symbol) {
@@ -48,24 +48,75 @@ function createPlayer(name, symbol) {
 };
 
 // GAME LOGIC
-const Game = (function() {
+const Game = (function () {
     let playerOne;
     let playerTwo;
     let currentPlayer;
 
-        function startNewGame() {
+    function startNewGame() {
+        // Clear gameboard
+        gameBoard.resetBoard();
 
+        // Create players
+        playerOne = createPlayer("Player X", "X")
+        playerTwo = createPlayer("Player O", "O")
+
+        // Decide who goes first
+        if (Math.random() > 0.5) {
+            currentPlayer = playerOne;
+        } else {
+            currentPlayer = playerTwo;
         }
 
-        function getCurrentPlayer() {
+        console.log(`${currentPlayer.name}'s turn`);
+    }
 
+    function getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    function makeMove(row, col) {
+
+        // Determine if game is still going
+        if (determineWinner() === true) {
+            return;
         }
 
-        function makeMove() {
+        const player = getCurrentPlayer();
 
+    // Check if the spot is already taken
+        const currentBoard = Gameboard.getBoard();
+        if (currentBoard[row][col] !== '') {
+        console.log("Spot already taken!");
+        return;                    
+    }
+        gameBoard.makeMove(row, col, player.symbol)
+        
+        //  Check if the game ended
+        if (determineWinner()) {
+        // Game over - handle win/tie later
+        return;
+    }
+        if (determineWinner === false) {
+            if (currentPlayer = playerOne) {
+                currentPlayer = playerTwo;
+            } 
+                else if (currentPlayer === playerTwo) {
+                    currentPlayer === playerOne;
+            }
+            
         }
+    }
 
-        function determineWinner() {
+    function determineWinner() {
 
-        }
-})
+    }
+
+    return {
+        startNewGame,
+        getCurrentPlayer,
+        makeMove,
+        determineWinner
+    };
+
+})();
