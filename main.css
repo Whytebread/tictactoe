@@ -1,13 +1,22 @@
 /* BOARD */
 
-.board-container {
+h1 {
+    text-align: center;
+}
 
+.board-container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px;
+  justify-content: center;
 }
 
 .board-square {
     width: 100px;
     height: 100px;
-    gap: 5px;
+    border: 2px solid black;
+    cursor: pointer;
 }
 
 /* PLAYER DISPLAY */
@@ -51,5 +60,5 @@
 }
 
 .reset {
-    
+
 }
