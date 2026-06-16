@@ -1,0 +1,55 @@
+/* BOARD */
+
+.board-container {
+
+}
+
+.board-square {
+    width: 100px;
+    height: 100px;
+    gap: 5px;
+}
+
+/* PLAYER DISPLAY */
+
+.players-container {
+
+}
+
+.player-one-container {
+
+}
+
+.player-two-container {
+
+}
+
+#player-one {
+
+}
+
+#player-two {
+
+}
+
+.player-turn {
+
+}
+
+.winner-display {
+
+}
+
+/* BUTTONS */
+
+.buttons {
+
+}
+
+.new {
+
+}
+
+.reset {
+    
+}
