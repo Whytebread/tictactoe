@@ -1,3 +1,13 @@
+// GLOBAL VARIABLES
+
+const boardSquare = document.querySelectorAll(".board-square");
+const playerDisplay = document.querySelector(".player-display");
+const winnerDisplay = document.querySelector(".winner-display");
+const newGameButton = document.querySelector(".new");
+const resetButton = document.querySelector(".reset");
+const playerOneInput = document.querySelector("#player-one");
+const playerTwoInput = document.querySelector("#player-two");
+
 // GAMEBOARD
 const gameBoard = (function () {
     let board =
