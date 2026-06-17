@@ -36,7 +36,7 @@ const gameBoard = (function () {
     function resetBoard() {
         for (let row = 0; row < 3; row++) {
             for (let col = 0; col < 3; col++) {
-                board[row][col] === "";
+                board[row][col] = "";
             }
         }
     }
@@ -95,7 +95,7 @@ const Game = (function () {
         const player = getCurrentPlayer();
 
     // Check if the spot is already taken
-        const currentBoard = Gameboard.getBoard();
+        const currentBoard = gameboard.getBoard();
         if (currentBoard[row][col] !== '') {
         console.log("Spot already taken!");
         return;                    
@@ -107,12 +107,12 @@ const Game = (function () {
         // Game over - handle win/tie later
         return;
     }
-        if (determineWinner === false) {
-            if (currentPlayer = playerOne) {
+        if (determineWinner() === false) {
+            if (currentPlayer === playerOne) {
                 currentPlayer = playerTwo;
             } 
                 else if (currentPlayer === playerTwo) {
-                    currentPlayer === playerOne;
+                    currentPlayer = playerOne;
             }
             
         }
