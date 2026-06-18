@@ -222,3 +222,5 @@ const displayController = (function () {
     };
 
 })();
+
+displayController.addEventListeners();
