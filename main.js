@@ -223,4 +223,7 @@ const displayController = (function () {
 
 })();
 
+Game.startNewGame();
+displayController.renderBoard();
+displayController.updateTurnDisplay();
 displayController.addEventListeners();
