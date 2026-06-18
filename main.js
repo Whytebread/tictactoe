@@ -161,9 +161,23 @@ const Game = (function () {
 
 // GAME DISPLAY
 const displayController = (function () {
-    function renderBoard() { }
+    function renderBoard() {
+        const board = gameBoard.getBoard();
 
-    function updateTurnDisplay() { }
+        for (let i = 0; i < boardSquare.length; i++) {
+            const row = Math.floor(i / 3);
+            const col = i % 3;
+
+            boardSquare[i].textContent = board[row][col];
+        }
+    }
+
+    function updateTurnDisplay() {
+        const player = Game.getCurrentPlayer();
+        if (player) {
+            playerDisplay.textContent = `${player.name}'s Turn}`
+        }
+     }
 
     function showWinner() { }
 
