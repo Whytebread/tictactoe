@@ -142,7 +142,7 @@ const Game = (function () {
             }
         }
 
-        
+
         // Check tie — is every cell filled?
         const isTie = b.flat().every(cell => cell !== '');
         if (isTie) return 'tie';
@@ -157,4 +157,17 @@ const Game = (function () {
         determineWinner
     };
 
+})();
+
+// GAME DISPLAY
+const displayController = (function () {
+    function renderBoard() { }
+    function updateTurnDisplay() { }
+    function showWinner() { }
+
+    return {
+        renderBoard,
+        updateTurnDisplay,
+        showWinner
+    };
 })();
