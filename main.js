@@ -85,36 +85,29 @@ const Game = (function () {
         return currentPlayer;
     }
 
-    function makeMove(row, col) {
+    function getPlayerBySymbol(symbol) {
+        if (playerOne.symbol === symbol) return playerOne;
+        if (playerTwo.symbol === symbol) return playerTwo;
+    }
 
-        // Determine if game is still going
-        if (determineWinner() === true) {
+    function makeMove(row, col) {
+        if (determineWinner() !== null) {
             return;
         }
 
         const player = getCurrentPlayer();
-
-        // Check if the spot is already taken
         const currentBoard = gameBoard.getBoard();
+
         if (currentBoard[row][col] !== '') {
             console.log("Spot already taken!");
             return;
         }
+
         gameBoard.makeMove(row, col, player.symbol)
 
-        //  Check if the game ended
-        if (determineWinner()) {
-            // Game over - handle win/tie later
-            return;
-        }
-        if (determineWinner() === false) {
-            if (currentPlayer === playerOne) {
-                currentPlayer = playerTwo;
-            }
-            else if (currentPlayer === playerTwo) {
-                currentPlayer = playerOne;
-            }
-
+        const result = determineWinner();
+        if (result === null) {
+            currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
         }
     }
 
@@ -142,7 +135,6 @@ const Game = (function () {
             }
         }
 
-
         // Check tie — is every cell filled?
         const isTie = b.flat().every(cell => cell !== '');
         if (isTie) return 'tie';
@@ -153,6 +145,7 @@ const Game = (function () {
     return {
         startNewGame,
         getCurrentPlayer,
+        getPlayerBySymbol,
         makeMove,
         determineWinner
     };
@@ -175,15 +168,53 @@ const displayController = (function () {
     function updateTurnDisplay() {
         const player = Game.getCurrentPlayer();
         if (player) {
-            playerDisplay.textContent = `${player.name}'s Turn}`
+            playerDisplay.textContent = `${player.name}'s Turn`;
+        } else {
+            playerDisplay.textContent = '';
         }
-     }
+    }
 
-    function showWinner() { }
+    function showWinner() {
+        const result = Game.determineWinner();
+        if (result === 'tie') {
+            winnerDisplay.textContent = "It's a Tie!";
+        } else if (result) {
+            const winner = Game.getPlayerBySymbol(result);
+            winnerDisplay.textContent = `${winner.name} Wins!`;
+        } else {
+            winnerDisplay.textContent = '';
+        }
+    }
+
+    function handleSquareClick(e) {
+        const index = e.target.dataset.index;
+        const row = Math.floor(index / 3);
+        const col = index % 3;
+
+        Game.makeMove(row, col);
+        renderBoard();
+        updateTurnDisplay();
+        showWinner();
+    }
+
+    function addEventListeners() {
+        boardSquare.forEach(square => {
+            square.addEventListener('click', handleSquareClick);
+        });
+
+        newGameButton.addEventListener('click', () => {
+            Game.startNewGame();
+            renderBoard();
+            updateTurnDisplay();
+            winnerDisplay.textContent = '';
+        });
+    }
 
     return {
         renderBoard,
         updateTurnDisplay,
-        showWinner
+        showWinner,
+        addEventListeners
     };
+
 })();
