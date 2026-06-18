@@ -107,7 +107,11 @@ const Game = (function () {
 
         const result = determineWinner();
         if (result === null) {
-            currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
+            if (currentPlayer === playerOne) {
+                currentPlayer = playerTwo;
+            } else {
+                currentPlayer = playerOne;
+            }
         }
     }
 
