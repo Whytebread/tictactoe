@@ -1,7 +1,7 @@
 // GLOBAL VARIABLES
 
 const boardSquare = document.querySelectorAll(".board-square");
-const playerDisplay = document.querySelector(".player-display");
+const playerDisplay = document.querySelector(".player-turn");
 const winnerDisplay = document.querySelector(".winner-display");
 const newGameButton = document.querySelector(".new");
 const resetButton = document.querySelector(".reset");
