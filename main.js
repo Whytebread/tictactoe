@@ -94,32 +94,60 @@ const Game = (function () {
 
         const player = getCurrentPlayer();
 
-    // Check if the spot is already taken
+        // Check if the spot is already taken
         const currentBoard = gameboard.getBoard();
         if (currentBoard[row][col] !== '') {
-        console.log("Spot already taken!");
-        return;                    
-    }
+            console.log("Spot already taken!");
+            return;
+        }
         gameBoard.makeMove(row, col, player.symbol)
-        
+
         //  Check if the game ended
         if (determineWinner()) {
-        // Game over - handle win/tie later
-        return;
-    }
+            // Game over - handle win/tie later
+            return;
+        }
         if (determineWinner() === false) {
             if (currentPlayer === playerOne) {
                 currentPlayer = playerTwo;
-            } 
-                else if (currentPlayer === playerTwo) {
-                    currentPlayer = playerOne;
             }
-            
+            else if (currentPlayer === playerTwo) {
+                currentPlayer = playerOne;
+            }
+
         }
     }
 
     function determineWinner() {
+        const b = gameBoard.getBoard();
+        const lines = [
+            // rows
+            [[0, 0], [0, 1], [0, 2]],
+            [[1, 0], [1, 1], [1, 2]],
+            [[2, 0], [2, 1], [2, 2]],
+            // cols
+            [[0, 0], [1, 0], [2, 0]],
+            [[0, 1], [1, 1], [2, 1]],
+            [[0, 2], [1, 2], [2, 2]],
+            // diagonals
+            [[0, 0], [1, 1], [2, 2]],
+            [[0, 2], [1, 1], [2, 0]],
+        ];
 
+        for (const [[r1, c1], [r2, c2], [r3, c3]] of lines) {
+            if (b[r1][c1] !== '' &&
+                b[r1][c1] === b[r2][c2] &&
+                b[r2][c2] === b[r3][c3]) {
+                return b[r1][c1]; // returns 'X' or 'O'
+            }
+        }
+
+        
+        // Check tie — is every cell filled?
+        const isTie = b.flat().every(cell => cell !== '');
+        if (isTie) return 'tie';
+
+        return null; // game still going
     }
 
     return {
