@@ -95,7 +95,7 @@ const Game = (function () {
         const player = getCurrentPlayer();
 
         // Check if the spot is already taken
-        const currentBoard = gameboard.getBoard();
+        const currentBoard = gameBoard.getBoard();
         if (currentBoard[row][col] !== '') {
             console.log("Spot already taken!");
             return;
@@ -162,7 +162,9 @@ const Game = (function () {
 // GAME DISPLAY
 const displayController = (function () {
     function renderBoard() { }
+
     function updateTurnDisplay() { }
+
     function showWinner() { }
 
     return {
