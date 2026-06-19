@@ -68,8 +68,8 @@ const Game = (function () {
         gameBoard.resetBoard();
 
         // Create players
-        playerOne = createPlayer("Player X", "X")
-        playerTwo = createPlayer("Player O", "O")
+        playerOne = createPlayer(playerOneInput.value || "Player X", "X")
+        playerTwo = createPlayer(playerTwoInput.value || "Player O", "O")
 
         // Decide who goes first
         if (Math.random() > 0.5) {
