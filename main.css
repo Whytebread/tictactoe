@@ -24,14 +24,15 @@ h1 {
     font-weight: bold;
 }
 
-/* PLAYER DISPLAY */
-
-.players-container {
+.game-container {
     display: flex;
-    justify-content: space-around;
-    padding-top: 50px;
     align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px;
 }
+
+/* PLAYER DISPLAY */
 
 .player-one-container {
     text-align: center;
@@ -44,11 +45,13 @@ h1 {
 #player-one {
     padding: 15px;
     font-size: 18px;
+    text-align: center;
 }
 
 #player-two {
     padding: 15px;
     font-size: 18px;
+    text-align: center;
 }
 
 label {
