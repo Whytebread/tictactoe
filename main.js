@@ -212,6 +212,10 @@ const displayController = (function () {
             updateTurnDisplay();
             winnerDisplay.textContent = '';
         });
+
+        resetButton.addEventListener("click", () => {
+            Game.resetBoard();
+        });
     }
 
     return {
