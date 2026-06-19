@@ -214,7 +214,8 @@ const displayController = (function () {
         });
 
         resetButton.addEventListener("click", () => {
-            Game.resetBoard();
+            gameBoard.resetBoard();
+            renderBoard();
         });
     }
 
